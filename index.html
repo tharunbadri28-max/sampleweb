@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unilever Global — Fast Demo</title>
+
+  <link rel="stylesheet" href="tharun web.css">
+    <meta name="description" content="A fast, lightweight corporate homepage inspired by Unilever’s structure." />
+  <meta name="theme-color" content="#0b3d91" />
+ 
+ <style>
+    :root {
+      color-scheme: light;
+      --brand: #0b3d91;
+      --brand-dark: #14366a;
+      --ink: #0f172a;
+      --muted: #475569;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --line: #e2e8f0;
+      --accent: #0ea5e9;
+      --radius: 16px;
+      --shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: #fff;
+      background: var(--brand);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--brand);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 20;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 24px;
+    }
+
+    .brand { 
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.3px;
+    }
+
+    .brand img {
+      height: 28px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: #e2e8f0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search-input {
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-input::placeholder {
+      color: #e2e8f0;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid #fff;
+      background: #fff;
+      color: var(--brand);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .hero {
+      background: var(--brand);
+      padding: 72px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: #e2e8f0;
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-size: 13px;
+      color: #e2e8f0;
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(24px, 3vw, 32px);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .card > *:not(img) {
+      padding: 0 22px;
+    }
+
+    .card > :first-of-type {
+      padding-top: 22px;
+    }
+
+    .card > :last-child {
+      padding-bottom: 22px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+
+    .card p {
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+
+    .card a {
+      margin-top: auto;
+      font-weight: 600;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .band {
+      background: transparent;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      align-items: center;
+      background: #0b3d91;
+      color: #fff;
+      padding: 32px;
+      border-radius: 20px;
+    }
+
+    .cta p {
+      color: #e2e8f0;
+    }
+
+    .footer {
+      background: var(--brand);
+      color: #e2e8f0;
+      padding: 28px 0 18px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      color: #e2e8f0;
+      font-size: 12px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="https://www.unilever.com/core-assets/logos/logo-wordmark.svg" alt="Unilever" />
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#brands">Brands</a>
+        <a href="#groups">Business Groups</a>
+        <a href="#culture">Culture</a>
+        <a href="#news">News</a>
+        <a href="#sustainability">Sustainability</a>
+        <a href="#investors">Investors</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <input class="search-input" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn">Explore</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="tag">Unilever Global</p>
+          <h1>Everyday brands, better living — powered by science and purpose.</h1>
+          <p>
+            We build iconic household and personal care brands that reach billions of people,
+            combining innovation, insight, and sustainability to create long-term value.
+          </p>
+          <div class="nav-actions">
+            <button class="btn">Discover our brands</button>
+            <button class="btn secondary">Read our strategy</button>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Highlights</h3>
+          <p>Focused portfolio. Clear growth priorities. Global reach with local expertise.</p>
+          <div class="stats">
+            <div class="stat"><strong>190+</strong><br />Countries served</div>
+            <div class="stat"><strong>3.4B</strong><br />People reached daily</div>
+            <div class="stat"><strong>4</strong><br />Business groups</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="groups" class="band">
+      <div class="container">
+        <div class="section-title">
+          <h2>The world’s best-known brands — at scale</h2>
+          <p class="tag">Business Groups</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/cdc0b1e9352cab79258c3a64f409ac2432bfc721-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Beauty and Wellbeing" />
+            <span class="tag">Beauty &amp; Wellbeing</span>
+            <h3>Positive beauty, healthy lifestyles.</h3>
+            <p>Premium care and wellness experiences grounded in science and sensorial delight.</p>
+            <a href="#brands">Explore Beauty &amp; Wellbeing →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/12b10c30e501d0c836c75d49384b62f72193b0e7-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Personal Care" />
+            <span class="tag">Personal Care</span>
+            <h3>Everyday confidence, global impact.</h3>
+            <p>Trusted hygiene, deodorants, and oral care delivered with breakthrough innovation.</p>
+            <a href="#brands">Explore Personal Care →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/1c78573eff58c4043207233032049612dc3bb404-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Foods" />
+            <span class="tag">Home &amp; Foods</span>
+            <h3>Joyful homes, memorable meals.</h3>
+            <p>Powerful cleaning, nutrition, and taste experiences for families everywhere.</p>
+            <a href="#brands">Explore Home &amp; Foods →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="culture">
+      <div class="container">
+        <div class="section-title">
+          <h2>We build culturally connected brands</h2>
+          <p class="tag">Marketing</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/26c0e02ba8ffa7b7c1ba97e24ddad65a68128ce4-4184x2354.png?w=1200&h=675&fit=crop&auto=format" alt="Social-first storytelling" />
+            <h3>Social-first storytelling</h3>
+            <p>Turning consumer insights into campaigns that show up where people are.</p>
+            <a href="#news">Read the latest stories →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/cdc0b1e9352cab79258c3a64f409ac2432bfc721-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Design-led innovation" />
+            <h3>Design-led innovation</h3>
+            <p>Packaging and sensorial upgrades that elevate everyday routines.</p>
+            <a href="#sustainability">See our priorities →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/12b10c30e501d0c836c75d49384b62f72193b0e7-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Future-facing partnerships" />
+            <h3>Future-facing partnerships</h3>
+            <p>Collaborations that connect communities, culture, and commerce.</p>
+            <a href="#careers">Join the team →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="band">
+      <div class="container">
+        <div class="section-title">
+          <h2>Latest news</h2>
+          <a class="tag" href="#news">View all</a>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/1c78573eff58c4043207233032049612dc3bb404-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Portfolio growth news" />
+            <span class="tag">Press release</span>
+            <h3>Portfolio sharpened for growth in key markets</h3>
+            <p>Focused investments across core categories to accelerate performance.</p>
+            <a href="#news">Read more →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/26c0e02ba8ffa7b7c1ba97e24ddad65a68128ce4-4184x2354.png?w=1200&h=675&fit=crop&auto=format" alt="Product innovation news" />
+            <span class="tag">News article</span>
+            <h3>Next-gen product upgrades win with new consumers</h3>
+            <p>Science-backed formulas delivering premium experiences at scale.</p>
+            <a href="#news">Read more →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/cdc0b1e9352cab79258c3a64f409ac2432bfc721-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Sustainable demand insight" />
+            <span class="tag">Insight</span>
+            <h3>How marketing drives sustainable demand</h3>
+            <p>Our model for brand desire, cultural relevance, and performance.</p>
+            <a href="#news">Read more →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sustainability">
+      <div class="container">
+        <div class="section-title">
+          <h2>Leading in corporate sustainability</h2>
+          <p class="tag">Impact</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/12b10c30e501d0c836c75d49384b62f72193b0e7-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Climate action" />
+            <h3>Climate</h3>
+            <p>Reducing emissions and improving energy efficiency across the value chain.</p>
+            <a href="#sustainability">Learn about climate →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/1c78573eff58c4043207233032049612dc3bb404-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Nature restoration" />
+            <h3>Nature</h3>
+            <p>Protecting and regenerating ecosystems with partners and suppliers.</p>
+            <a href="#sustainability">Learn about nature →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/26c0e02ba8ffa7b7c1ba97e24ddad65a68128ce4-4184x2354.png?w=1200&h=675&fit=crop&auto=format" alt="Plastics and livelihoods" />
+            <h3>Plastics &amp; livelihoods</h3>
+            <p>Scaling circular packaging and improving livelihoods globally.</p>
+            <a href="#sustainability">Learn more →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="investors" class="band">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Invest in superior performance</h2>
+            <p>Access results, events, and shareholder resources in one place.</p>
+          </div>
+          <div class="nav-actions">
+            <button class="btn">Investor centre</button>
+            <button class="btn secondary">Results &amp; events</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="brands">
+      <div class="container">
+        <div class="section-title">
+          <h2>Household names</h2>
+          <p class="tag">Brands</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/cdc0b1e9352cab79258c3a64f409ac2432bfc721-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Personal Care brands" />
+            <h3>Personal Care</h3>
+            <p>Dove, Lifebuoy, Rexona, and more — built on trust and performance.</p>
+            <a href="#brands">Explore personal care →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/12b10c30e501d0c836c75d49384b62f72193b0e7-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Home Care brands" />
+            <h3>Home Care</h3>
+            <p>Clean homes with products designed for modern, busy lives.</p>
+            <a href="#brands">Explore home care →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/1c78573eff58c4043207233032049612dc3bb404-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Foods brands" />
+            <h3>Foods</h3>
+            <p>Trusted flavors and nutrition that bring people together.</p>
+            <a href="#brands">Explore foods →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="careers" class="band">
+      <div class="container">
+        <div class="section-title">
+          <h2>Market-making, future-shaping careers</h2>
+          <p class="tag">Careers</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/26c0e02ba8ffa7b7c1ba97e24ddad65a68128ce4-4184x2354.png?w=1200&h=675&fit=crop&auto=format" alt="Early careers" />
+            <h3>Early careers</h3>
+            <p>Launch with programs that pair mentorship, training, and real impact.</p>
+            <a href="#careers">Explore early careers →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/cdc0b1e9352cab79258c3a64f409ac2432bfc721-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Experienced roles" />
+            <h3>Experienced roles</h3>
+            <p>Join teams shaping category-leading brands across the globe.</p>
+            <a href="#careers">Search roles →</a>
+          </article>
+          <article class="card">
+            <img src="https://www.unilever.com/content-images/92ui5egz/production/12b10c30e501d0c836c75d49384b62f72193b0e7-1920x1080.jpg?w=1200&h=675&fit=crop&auto=format" alt="Culture and values" />
+            <h3>Culture &amp; values</h3>
+            <p>Inclusive, accountable, and built to win together.</p>
+            <a href="#careers">Learn about culture →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="#groups">Business Groups</a>
+        <a href="#news">Newsroom</a>
+        <a href="#sustainability">Sustainability</a>
+        <a href="#investors">Investors</a>
+        <a href="#brands">Brands</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact">LinkedIn</a>
+        <a href="#contact">Instagram</a>
+        <a href="#contact">YouTube</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Unilever Global Demo. All rights reserved.</span>
+        <span>Privacy · Cookies · Accessibility · Legal</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
